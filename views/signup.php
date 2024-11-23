@@ -2,7 +2,7 @@
 <div class="container">
         <div class="card mx-auto mt-5" style="max-width: 350px;">
             <h2 class="mx-auto mt-3">Create an account</h2>
-            <form action="controllers/process_signup.php" method="post" class="m-3">
+            <form action="controllers/process_signup.php" method="POST" class="m-3">
             
                 <div class="form-group mb-3">
                     <label class="form-label" for="firstname">Firstname</label>
@@ -23,6 +23,9 @@
                 <div class="form-group mb-3">
                     <label class="form-label" for="confirm_pass">Confirm Password</label>
                     <input type="password" id="confirm_pass" name="confirm_pass" class="form-control" placeholder="*******" />
+                </div>
+                <div id="passErr" class="text-danger" style="display: none;">
+                    Passwords do not match.
                 </div>
                 <button type="submit" class="btn btn-primary mt-5 mx-auto d-block w-100">Sign up</button>
 

@@ -27,7 +27,22 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB70fmdxTT6eYDICyXwGr7rZDy-0DZJSQY&libraries=places"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script>
+
+
     $(document).ready(function () {
+
+
+        function signUpError(){
+            const password = $('#password').val();
+            const confirmPass = $('#confirm_pass').val();
+            const passErr = $('#passErr');
+            if(password !== confirmPass){
+                alert(9);
+                passErr.show();
+            }else{
+                passErr.hide;
+            }
+        }
 
         attachFormListener();
         // Function to load content via AJAX
@@ -42,6 +57,10 @@
                     window.history.pushState({ page: page }, page, page + '.php'); // Update browser history
 
                     attachFormListener();
+                    $('form').on('submit', function(e){
+                        
+                        signUpError()
+                    })
 
 
                 },
