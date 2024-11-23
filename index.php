@@ -11,10 +11,12 @@
 </head>
 <body>
 
-    <?php include 'header.php'?>
+    <?php include 'includes/header.php'?>
     <div class="app" id="content">
         <!-- Content will be loaded here dynamically -->
     </div>
+
+    <?php include 'includes/footer.php'?>
 
 </body>
 
