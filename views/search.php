@@ -46,22 +46,23 @@
                 <div class="d-flex justify-content-between  p-3 border mb-3 rounded">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-4 col-6">
+                            <div class="col-lg-3 col-6">
                                 <div>
                                     <img class="img-fluid" src="../assets/images/cars/Grand-i10-Large-300x170.png" alt="" width="200px">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-6">
+                            <div class="col-lg-6 col-6">
                                 <h5 class="font-weight-medium">Hyundai i10 Grand</h5>
                                 <span class="mdi mdi-car" style="font-size: 15px;">Van</span>
                                 <span class="mdi mdi-cog" style="font-size: 15px;">Manual</span>
                                 <span class="mdi mdi-car-seat" style="font-size: 15px;">4</span>
                             </div>
-                            <div class="col-lg-4 col-12 mt-5">
-                                <div class="text-end">
-                                    <p>P15000.00</p>
-                                    <button class="btn btn-primary">VIEW DETAILS</button><br>
-                                    <button class="btn btn-primary">BOOK</button>
+                            <div class="col-lg-3 col-12 mt-5">
+                                <div class="text-end text-lg-end text-md-end text-center">
+                                    <!-- Responsive wrapping of Price and Buttons -->
+                                    <p class="mb-4"><strong>P15000.00<strong></p>
+                                    <button id="viewDetailBtn" class="btn mb-2 w-100">VIEW DETAILS</button>
+                                    <button id="bookBtn" class="btn w-100">BOOK</button>
                                 </div>
                             </div>
                         </div>

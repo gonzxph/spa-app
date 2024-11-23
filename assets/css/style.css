@@ -68,3 +68,8 @@ a:hover{
 .card-titlesf{
     background-color: #D9D9D9;
 }
+
+#bookBtn, #viewDetailBtn{
+    background-color: #F95454;
+    color: white;
+}

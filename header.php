@@ -21,7 +21,7 @@
                 <a class="nav-link" href="#" data-page="login">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fw-bold" style="border:1px #02A9F5 solid; border-radius:7px; color: white; background-color: #02A9F5" href="#">Signup</a>
+                <a class="nav-link fw-bold" style="border:1px #02A9F5 solid; border-radius:7px; color: white; background-color: #02A9F5" href="#" data-page="signup">Signup</a>
             </li>
         </ul>
     </div>
