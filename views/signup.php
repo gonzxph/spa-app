@@ -1,8 +1,8 @@
 
 <div class="container">
-        <div class="card mx-auto mt-5" style="max-width: 350px;">
+        <div class="card mx-auto mt-5" style="max-width: 390px;">
             <h2 class="mx-auto mt-3">Create an account</h2>
-            <form action="controllers/process_signup.php" method="POST" class="m-3">
+            <form action="controllers/process_signup.php" method="POST" class="m-3 ajax-form" id="signupForm">
             
                 <div class="form-group mb-3">
                     <label class="form-label" for="firstname">Firstname</label>

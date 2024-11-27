@@ -14,17 +14,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $userModel = new User($db);
 
     if($userModel->existingEmail($email)){
-        echo 'Already exist';
-    }else{
-        echo 'Not found email';
+        echo json_encode([
+            "status"=>"exist",
+            "message" => "Email already exist.",
+            "redirect" => "signup" // Name of the page to load
+        ]);
+        exit;
     }
 
     $isAdded = $userModel->create($firstname, $lastname, $email, $hashPassword);
 
     if($isAdded){
-        echo 'User created successfully';
+        echo json_encode([
+            "status"=>"success",
+            "message" => "User created successfully!",
+            "redirect" => "login" // Name of the page to load
+        ]);
     }else{
-        echo 'Not created';
+        echo json_encode([
+            "status" => "error",
+            "message" => "Failed to create user. Please try again.",
+            "redirect" => "signup" // Reload signup form
+        ]);
     }
 
 }

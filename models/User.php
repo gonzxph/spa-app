@@ -33,8 +33,27 @@ class User{
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $stmt->execute();
+            return true;
         }catch(PDOException $e){
             error_log("Error creating user: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function verifyUser($email, $password){
+        try{
+            $sql = "SELECT * FROM user WHERE user_email = :email LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+ 
+            return true;
+
+
+        }catch(PDOException $e){
+            error_log("Error verifying user: " . $e->getMessage());
             return false;
         }
     }

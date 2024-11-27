@@ -16,6 +16,19 @@
         <!-- Content will be loaded here dynamically -->
     </div>
 
+
+    <!-- Toast Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+    <div id="toastMessage" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toastBody">
+                <!-- Message will be inserted dynamically -->
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
     <?php include 'includes/footer.php'?>
 
 </body>
@@ -29,65 +42,116 @@
 <script>
 
 
-    $(document).ready(function () {
+$(document).ready(function () {
 
+    function showToast(message, type) {
+        const toast = $('#toastMessage');
+        const toastBody = $('#toastBody');
 
-        function signUpError(){
+        toast.removeClass('bg-primary bg-danger bg-warning bg-success');
+
+        // Customize toast appearance based on type (success or error)
+        if (type === 'success') {
+            toast.addClass('bg-success');
+        } else if (type === 'error') {
+            toast.addClass('bg-danger');
+        } else if (type === 'exist') {
+            toast.addClass('bg-warning');
+        } else if (type === 'invalidPass') {
+            toast.addClass('bg-danger');
+        }
+
+        // Set the message
+        toastBody.text(message);
+
+        // Initialize and show the toast
+        const bsToast = new bootstrap.Toast(toast[0]);
+        bsToast.show();
+    }
+
+    // General function to handle form validation and AJAX submission
+    function handleFormSubmit(e) {
+        const form = $(this);
+        const formAction = form.attr('action'); // Get form action URL
+        const formData = form.serialize(); // Serialize form data
+
+        e.preventDefault(); // Prevent default form submission
+
+        // Perform form-specific validation if needed (like password confirmation)
+        if (form.is('#signupForm')) { // Specific validation for the signup form
             const password = $('#password').val();
             const confirmPass = $('#confirm_pass').val();
             const passErr = $('#passErr');
-            if(password !== confirmPass){
-                alert(9);
+            if (password !== confirmPass) {
                 passErr.show();
-            }else{
-                passErr.hide;
+                return false;
+            } else {
+                passErr.hide();
             }
         }
 
-        attachFormListener();
-        // Function to load content via AJAX
-        function loadPage(page) {
-            $('#content').html('<p>Loading...</p>'); // Show loading text or spinner while content is loading
-
-            $.ajax({
-                url: 'views/' + page + '.php', // Dynamically fetch the page
-                type: 'GET',
-                success: function (response) {
-                    $('#content').html(response); // Insert the loaded content into the #content div
-                    window.history.pushState({ page: page }, page, page + '.php'); // Update browser history
-
-                    attachFormListener();
-                    $('form').on('submit', function(e){
-                        
-                        signUpError()
-                    })
-
-
-                },
-                error: function () {
-                    $('#content').html('<p>Error loading page.</p>'); // Handle error
+        // Send form data via AJAX
+        $.ajax({
+            url: formAction,
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            success: function (response) {
+                if (response.status == 'success') {
+                    showToast(response.message, 'success');
+                    loadPage(response.redirect); // Redirect to specified page after success
+                } else if(response.status == 'exist'){
+                    showToast(response.message, 'exist');
+                } else if(response.status == 'invalidPass'){
+                    showToast(response.message, 'invalidPass');
+                }else {
+                    showToast(response.message, 'error');
                 }
-            });
-        }
-
-        // Load the default home page
-        loadPage('home');
-        
-
-        // Event listener for navigation
-        $(document).on('click', 'a.nav-link', function (e) {
-            e.preventDefault();
-            const page = $(this).data('page');
-            loadPage(page);
+            },
+            error: function (xhr, status, error) {
+                alert("An error occurred: " + error);
+            }
         });
+    }
 
-        // Handle browser back/forward navigation
-        $(window).on('popstate', function () {
-            const path = window.location.pathname.split('/').pop(); // Get current path
-            const page = path === '' ? 'home' : path.replace('.php', ''); // Default to 'home' if path is empty
-            loadPage(page); // Load the corresponding page
+    // Attach the AJAX handler to all forms with class "ajax-form"
+    $(document).on('submit', 'form.ajax-form', handleFormSubmit);
+
+    // Function to load content via AJAX
+    function loadPage(page) {
+        $('#content').html('<p>Loading...</p>'); // Show loading text or spinner while content is loading
+
+        $.ajax({
+            url: 'views/' + page + '.php', // Dynamically fetch the page
+            type: 'GET',
+            success: function (response) {
+                $('#content').html(response); // Insert the loaded content into the #content div
+                window.history.pushState({ page: page }, page, page + '.php'); // Update browser history
+            },
+            error: function () {
+                $('#content').html('<p>Error loading page.</p>'); // Handle error
+            }
         });
+    }
+
+    // Load the default home page initially
+    loadPage('home');
+
+    // Event listener for navigation links
+    $(document).on('click', 'a.nav-link', function (e) {
+        e.preventDefault();
+        const page = $(this).data('page');
+        loadPage(page);
     });
+
+    // Handle browser back/forward navigation
+    $(window).on('popstate', function () {
+        const path = window.location.pathname.split('/').pop(); // Get current path
+        const page = path === '' ? 'home' : path.replace('.php', ''); // Default to 'home' if path is empty
+        loadPage(page); // Load the corresponding page
+    });
+});
+
 </script>
 
 </html>
