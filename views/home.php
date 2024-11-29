@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text bg-white"><i class="fas fa-calendar-alt text-secondary"></i></span>
-                                    <input readonly id="dateTimeInput" type="text" data-bs-toggle="modal" data-bs-target="#dateTimeModal" class="form-control" placeholder="Choose date and time">
+                                    <input readonly name="dateTimeInput" id="dateTimeInput" type="text" data-bs-toggle="modal" data-bs-target="#dateTimeModal" class="form-control" placeholder="Choose date and time">
                                 </div>
                                 <div id="warningMessage" class="text-danger m-3" style="display: none;">
                                     Please fill out all fields before submitting!

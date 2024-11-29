@@ -27,6 +27,9 @@
                 <div id="passErr" class="text-danger" style="display: none;">
                     Passwords do not match.
                 </div>
+                <div id="emptyErr" class="text-danger" style="display: none;">
+                    Make sure no field is empty.
+                </div>
                 <button type="submit" class="btn btn-primary mt-5 mx-auto d-block w-100">Sign up</button>
 
             </form>
