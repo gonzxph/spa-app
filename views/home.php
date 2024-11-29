@@ -9,14 +9,14 @@
                     <div class="card text-center shadow-lg p-4" style="width: 25rem;">
                         <h5 class="card-title mb-3">Find the right car now!</h5>
                         <div class="card-body">
-                            <form id="bookingForm" method="GET">
+                            <form method="POST" action="controllers/search.php" class="m-3 ajax-form" id="bookingForm">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text bg-white"><i class="fa-solid fa-users"></i></span>
                                     <input id="pax" name="pax" type="number" class="form-control" placeholder="Number of pax" value="">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text bg-white"><i class="fas fa-calendar-alt text-secondary"></i></span>
-                                    <input readonly id="dateTimeInput" type="text" data-bs-toggle="modal" data-bs-target="#dateTimeModal" class="form-control" placeholder="Choose date and time">
+                                    <input readonly name="dateTimeInput" id="dateTimeInput" type="text" data-bs-toggle="modal" data-bs-target="#dateTimeModal" class="form-control" placeholder="Choose date and time">
                                 </div>
                                 <div id="warningMessage" class="text-danger m-3" style="display: none;">
                                     Please fill out all fields before submitting!

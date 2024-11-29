@@ -1,7 +1,7 @@
 <div class="container">
         <div class="card mx-auto mt-5" style="max-width: 350px;">
             <h2 class="mx-auto mt-3">Login</h2>
-            <form action="" method="post" class="m-3">
+            <form action="controllers/process_login.php" method="POST" class="ajax-form m-3" id="loginForm">
             
                 <div class="form-group mb-3">
                     <label class="form-label" for="email">Email address</label>
