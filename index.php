@@ -74,14 +74,27 @@ $(document).ready(function () {
         const form = $(this);
         const formAction = form.attr('action'); // Get form action URL
         const formData = form.serialize(); // Serialize form data
+        console.log(formData);
 
         e.preventDefault(); // Prevent default form submission
 
         // Perform form-specific validation if needed (like password confirmation)
         if (form.is('#signupForm')) { // Specific validation for the signup form
+            const fname = $('#firstname');
+            const lname = $('#lastname');
+            const email = $('#email');
             const password = $('#password').val();
             const confirmPass = $('#confirm_pass').val();
             const passErr = $('#passErr');
+            const emptyErr = $('#emptyErr');
+
+            if(fname == '' || lname == '' || email == '' || password == '' || confirmPass == ''){
+                emptyErr.show();
+                return false;
+            }else{
+                emptyErr.hide();
+            }
+
             if (password !== confirmPass) {
                 passErr.show();
                 return false;
