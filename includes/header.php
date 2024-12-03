@@ -9,19 +9,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-page="home">Home</span></a>
+                <a class="nav-link" href="/spa-app/home" data-page="home">Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-page="about">About</a>
+                <a class="nav-link" href="/spa-app/about" data-page="about">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-page="contact">Contact Us</a>
+                <a class="nav-link" href="/spa-app/contact" data-page="contact">Contact Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-page="login">Login</a>
+                <a class="nav-link" href="/spa-app/login" data-page="login">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fw-bold" style="border:1px #02A9F5 solid; border-radius:7px; color: white; background-color: #02A9F5" href="#" data-page="signup">Signup</a>
+                <a class="nav-link fw-bold" style="border:1px #02A9F5 solid; border-radius:7px; color: white; background-color: #02A9F5" href="/spa-app/signup" data-page="signup">Signup</a>
             </li>
         </ul>
     </div>
