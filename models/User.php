@@ -46,17 +46,21 @@ class User{
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
-
+    
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
- 
-            return true;
 
-
-        }catch(PDOException $e){
+            
+            if ($user && password_verify($password, $user['user_password'])) {
+                return $user; // Return the user data if verified
+            } else {
+                return false; // Invalid credentials
+            }
+        } catch(PDOException $e) {
             error_log("Error verifying user: " . $e->getMessage());
             return false;
         }
     }
+    
 
 }
 

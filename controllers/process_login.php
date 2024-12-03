@@ -10,6 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $userModel = new User($db);
 
     $user = $userModel->verifyUser($email, $password);
+
     header('Content-Type: application/json');
     if($user){
         
