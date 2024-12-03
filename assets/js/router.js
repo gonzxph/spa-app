@@ -1,4 +1,4 @@
-$().ready(function(){
+$().ready(function() {
     // Routes map
     const routes = {
         home: './views/home.php',
@@ -37,13 +37,6 @@ $().ready(function(){
             });
     }
 
-    // Handle browser back/forward navigation
-    window.addEventListener('popstate', () => {
-        const path = window.location.pathname.replace('/spa-app/', ''); // Remove '/spa-app/' part from the URL
-        const route = path === '' ? 'home' : path; // Default to 'home' if no path
-        loadPage(route);
-    });
-
     // Initial page load based on the URL path
     function loadInitialPage() {
         const path = window.location.pathname.replace('/spa-app/', ''); // Get the path without '/spa-app/'
@@ -53,4 +46,4 @@ $().ready(function(){
 
     // Load initial page on page load
     loadInitialPage();
-})
+});

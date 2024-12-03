@@ -33,6 +33,18 @@ $().ready(function(){
 
         e.preventDefault(); // Prevent default form submission
 
+        if(form.is('#bookingForm')){
+            const pax = $('#pax').val();
+            const date = $('#dateTimeInput').val();
+            const warningMessage = $('#warningMessage')
+
+            if(pax == '' || date == ''){
+                warningMessage.show();
+                return false;
+            }
+
+        }
+
         // Perform form-specific validation if needed (like password confirmation)
         if (form.is('#signupForm')) { // Specific validation for the signup form
             const fname = $('#firstname').val();
